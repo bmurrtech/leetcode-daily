@@ -10,5 +10,6 @@ This work is licensed under a
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
 # LeetCode Sovles
-The primary purpose of this repo is to record LeetCode solutions with copious comments and notes-to-self about programming logic for my future-self to review and further my coding skills.
+- [My LeetCode Profile](https://leetcode.com/bmurrtech/)
+- [Library of my LeetCode solutions](https://github.com/bmurrtech/leetcode/blob/main/solves.md) with copious comments and notes-to-self about programming logic for my future-self to review and further my coding skills.
 
