@@ -1,6 +1,5 @@
 ## 2073. Time Needed to Buy Tickets
-
-![2073](https://i.imgur.com/knSllgu.png)
+[LeetCode 2073 Link](https://leetcode.com/problems/time-needed-to-buy-tickets)
 
 This solution efficiently simulates the ticket buying process. The time complexity is O(n*m) where n is the number of people in the queue and m is the maximum number of tickets a person wants to buy. Though not the most efficient in terms of time complexity, given the constraints, this solution works well for the input size specified.
 
@@ -104,7 +103,7 @@ public class Solution {
 ```
 
 ## 950 Reveal Cards In Increasing Order
-![950](https://i.imgur.com/qBohtPh.png)
+[LeetCode Link 950](https://leetcode.com/problems/reveal-cards-in-increasing-order)
 
 ### Python
 - Sort the deck array in descending order.
@@ -287,3 +286,50 @@ public class Solution {
     }
 }
 ```
+## 129. Sum Root to Leaf Numbers
+[Leetcode Link](https://leetcode.com/problems/sum-root-to-leaf-numbers/)
+
+To solve this problem, the task is to compute the sum of all root-to-leaf numbers in a binary tree where each path represents a distinct number. This can be efficiently done using a Depth-First Search (DFS) approach. During the traversal, we'll maintain the current number by appending the node's value and converting the sequence to an integer on reaching a leaf node.
+
+We can implement this using a recursive function which:
+
+- Starts at the root and continues to traverse each node down to the leaf.
+- Accumulates the number represented by the path from the root to each node.
+- Adds the number to the total sum once a leaf node is reached.
+
+Here's how the solution will look:
+
+```python3
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        # Let's add some inner juice - the recursive function to compute the sums
+        def dfs(node, current_number):
+            if not node:
+                return 0  # No node, no money.
+            
+            # Building the number by shifting the digits left
+            current_number = current_number * 10 + node.val
+            
+            # Leaf node check, as only leaf nodes give us complete numbers
+            if not node.left and not node.right:
+                return current_number  # Full number from root to leaf
+            
+            # Recursively visit left and right, summing up the contributions
+            return dfs(node.left, current_number) + dfs(node.right, current_number)
+        
+        # Let's kick off the party with the root node
+        return dfs(root, 0)
+```
+### Explanation of the Code:
+
+- Recursive DFS (dfs function): This function takes the current node and the number formed up to this node. For each node, it updates the number (current_number = current_number * 10 + node.val) and continues the traversal. If a leaf is reached, it returns the number formed.
+- Handling of leaf nodes: Checks if a node has no children. If so, it's a leaf node, and we return the current accumulated number.
+- Summing contributions: If the node is not a leaf, the function recursively calls itself for the left and right children, summing their results to get the total from all paths through the current node.
+
+> This solution is efficient with a complexity of  O(N), where  N is the number of nodes in the tree. It effectively handles the tree traversal and number construction simultaneously without the need for additional data structures.
