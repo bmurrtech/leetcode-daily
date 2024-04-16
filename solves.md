@@ -333,3 +333,227 @@ class Solution:
 - Summing contributions: If the node is not a leaf, the function recursively calls itself for the left and right children, summing their results to get the total from all paths through the current node.
 
 > This solution is efficient with a complexity of  O(N), where  N is the number of nodes in the tree. It effectively handles the tree traversal and number construction simultaneously without the need for additional data structures.
+
+## 623 - Add One Row to Tree
+[Leetcode 623 Link](https://leetcode.com/problems/add-one-row-to-tree/)
+
+To solve the problem of adding a row to a binary tree at a given depth with a specific value, we need a clear understanding of tree traversal techniques. The algorithm I'll use involves a breadth-first traversal (BFS) to locate the nodes at the desired depth (depth-1). For this, we can use a queue to assist in our level-by-level traversal.
+
+Here's how we'll implement the `addOneRow` method in the `Solution` class:
+
+- Special Case for Root: If depth is 1, we immediately create a new root and make the existing root the left child of the new root. This step is straightforward and does not require any further traversal.
+- Breadth-First Search (BFS): Use a queue to explore the tree level by level until reaching `depth-1`. For each node at this level, we'll:
+  - Create new nodes with value `val`.
+  - Link these new nodes to the current node's children.
+  - Adjust the original child links to point to these new nodes.
+- Node Replacement: Once we've located the nodes at `depth-1`, we create new nodes with the given val and adjust the pointers accordingly, ensuring the structure of the tree remains intact.
+
+This algorithm runs efficiently given the constraints, as it processes each node in the tree at most once, resulting in a time complexity of O(n) where n is the number of nodes in the tree.
+
+### Python
+
+```python3
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def addOneRow(self, root: Optional[TreeNode], val: int, depth: int) -> Optional[TreeNode]:
+        if depth == 1:
+            # New root scenario - wrap the old root
+            new_root = TreeNode(val)
+            new_root.left = root
+            return new_root
+        
+        queue = [root]
+        current_depth = 1
+        
+        # Traverse the tree to the level just before the target depth
+        while current_depth < depth - 1:
+            next_level = []
+            for node in queue:
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+            queue = next_level
+            current_depth += 1
+        
+        # We're now at depth-1 and can insert the new row
+        for node in queue:
+            old_left, old_right = node.left, node.right
+            node.left = TreeNode(val)
+            node.right = TreeNode(val)
+            node.left.left = old_left
+            node.right.right = old_right
+        
+        return root
+```
+
+To implement the addOneRow method in Python 2.7 within the provided codebase, we will follow a similar approach as the Python 3 version discussed earlier. This involves using a breadth-first search (BFS) to find the appropriate nodes at depth - 1 and then modify the tree by inserting new nodes with the given value val. This Python 2.7 implementation maintains the tree's structure while efficiently adding a new row, adhering closely to Python conventions and ensuring backward compatibility with the Python 2 syntax and type annotations.
+
+Here's how you can implement this solution in Python 2.7:
+
+```python2.7
+# Definition for a binary tree node.
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution(object):
+    def addOneRow(self, root, val, depth):
+        """
+        :type root: TreeNode
+        :type val: int
+        :type depth: int
+        :rtype: TreeNode
+        """
+        if depth == 1:
+            # Create a new root, make the existing tree its left subtree
+            new_root = TreeNode(val, left=root)
+            return new_root
+
+        queue = [root]
+        current_depth = 1
+
+        # Traverse the tree level by level until the level before the desired depth
+        while current_depth < depth - 1:
+            next_level = []
+            for node in queue:
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+            queue = next_level
+            current_depth += 1
+
+        # Add the new row at the specified depth
+        for node in queue:
+            old_left, old_right = node.left, node.right
+            node.left = TreeNode(val, left=old_left)
+            node.right = TreeNode(val, right=old_right)
+
+        return root
+
+```
+
+### JavaScript
+To implement the `addOneRow` function in JavaScript, we'll follow the same logical approach used in the Python implementation. We'll handle the special case when the depth is 1 separately, and use a breadth-first search (BFS) with a queue for inserting a new row at the specified depth.
+
+- TreeNode Constructor: We use the TreeNode function to create new node instances. The constructor allows setting of left and right children, defaulting to null if not provided.
+- Special Case for Root: If depth === 1, we create a new root and make the existing tree its left subtree.
+- Breadth-First Search (BFS): Using a queue, we traverse the tree to reach the level right before the target depth. At each level, we gather the children of the nodes to continue to the next level.
+- Insertion: When the desired level is reached (depth-1), for each node at this level, we:
+  - Create two new nodes with the specified value val.
+  - Attach the original left and right children to these new nodes.
+  - Update the current nodes to point to these new nodes as their children.
+
+Here's how the JavaScript implementation will look:
+
+```javascript
+/**
+ * Adds a new row of nodes with a given value at the specified depth.
+ * @param {TreeNode} root - The root of the binary tree.
+ * @param {number} val - The value for the new row of nodes.
+ * @param {number} depth - The depth at which to add the new row.
+ * @return {TreeNode} The modified tree root.
+ */
+var addOneRow = function(root, val, depth) {
+    if (depth === 1) {
+        // New root node becomes the parent of the current tree
+        let newRoot = new TreeNode(val);
+        newRoot.left = root;
+        return newRoot;
+    }
+
+    let queue = [root];
+    let currentDepth = 1;
+
+    // Use BFS to reach the level just before the desired depth
+    while (currentDepth < depth - 1) {
+        let nextLevel = [];
+        for (let node of queue) {
+            if (node.left) nextLevel.push(node.left);
+            if (node.right) nextLevel.push(node.right);
+        }
+        queue = nextLevel;
+        currentDepth++;
+    }
+
+    // Insert the new row of nodes
+    for (let node of queue) {
+        let oldLeft = node.left;
+        let oldRight = node.right;
+        node.left = new TreeNode(val, oldLeft, null); // New left child, keeps the old left as its child
+        node.right = new TreeNode(val, null, oldRight); // New right child, keeps the old right as its child
+    }
+
+    return root;
+};
+
+```
+
+### C++
+Key Components of the Solution:
+- Queue for Level-Order Traversal: We use a standard std::queue from the C++ Standard Library to perform a breadth-first search (BFS). This method ensures that we traverse the tree level by level, which is ideal for finding and manipulating nodes at a specific depth.
+- Handling Special Case for depth == 1: If depth is 1, we need to add a new root to the tree. This is a straightforward case where a new root node is created, and the existing tree becomes the left child of this new root. This modification is immediate and does not require traversal of the tree.
+- Traversal to depth - 1: The goal is to reach the level just before the desired depth (depth - 1). The while loop iterates until currentDepth reaches depth - 1. Inside this loop:
+  - We determine the number of nodes at the current level (levelSize).
+  - For each node, we check and enqueue their children (left and right) if they exist. This sets up our queue for the next level.
+- Inserting the New Row: Once at the correct level (depth - 1), we iterate over the nodes at this level using the nodes stored in our queue. For each node at this level, we:
+  - Store the current left and right children.
+  - Create new nodes with the specified value (val) as the new left and right children.
+  - Attach the stored old children to the new nodes accordingly, ensuring the subtree structure below remains intact.
+
+```C++
+#include <queue>
+
+class Solution {
+public:
+    TreeNode* addOneRow(TreeNode* root, int val, int depth) {
+        if (depth == 1) {
+            // Create a new root and make the existing tree its left subtree
+            TreeNode* newRoot = new TreeNode(val);
+            newRoot->left = root;
+            return newRoot;
+        }
+
+        std::queue<TreeNode*> queue;
+        queue.push(root);
+        int currentDepth = 1;
+
+        // Use BFS to find the level just before the target depth
+        while (currentDepth < depth - 1) {
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; ++i) {
+                TreeNode* node = queue.front();
+                queue.pop();
+                if (node->left) queue.push(node->left);
+                if (node->right) queue.push(node->right);
+            }
+            ++currentDepth;
+        }
+
+        // At depth-1, modify the tree structure
+        while (!queue.empty()) {
+            TreeNode* node = queue.front();
+            queue.pop();
+            TreeNode* oldLeft = node->left;
+            TreeNode* oldRight = node->right;
+            node->left = new TreeNode(val);  // Insert new node as left child
+            node->left->left = oldLeft;      // Link old left child to new node
+            node->right = new TreeNode(val); // Insert new node as right child
+            node->right->right = oldRight;   // Link old right child to new node
+        }
+
+        return root;
+    }
+};
+
+```
+
+ 
