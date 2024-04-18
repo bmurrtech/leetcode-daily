@@ -555,5 +555,110 @@ public:
 };
 
 ```
+## 463 - Island Perimeter
+[Leetcode 463 Link](https://leetcode.com/problems/island-perimeter)
 
- 
+To determine the perimeter of the island in the given grid, we can iterate through each cell of the grid. For each land cell, we can calculate the perimeter by checking its adjacent cells (up, down, left, right) to see if they are water or are outside the grid boundary. The perimeter of the island is then the sum of the count of water cells adjacent to land cells.
+
+Let's break down the logic of the islandPerimeter function:
+
+- Initialization: Start by initializing the perimeter variable to 0. This variable will store the total perimeter of the island. Also, retrieve the number of rows (rows) and columns (cols) in the grid.
+- Iterate through the grid: Use nested loops to iterate through each cell of the grid.
+Check if the cell is land: For each cell in the grid, check if it represents land (i.e., the cell value is 1).
+- Calculate perimeter for each land cell:
+  - When encountering a land cell, add 4 to the perimeter. This is because each land cell contributes 4 units to the perimeter since it has four sides.
+  - Check adjacent cells to the current land cell to determine if they are also land cells:
+    - If there's a land cell to the left (grid[i][j - 1]) of the current cell, it shares a side with the current cell. In this case, subtract 2 from the perimeter because one side is shared.
+    - If there's a land cell above (grid[i - 1][j]) the current cell, it also shares a side with the current cell. Subtract 2 from the perimeter for the same reason.
+- Return the total perimeter: After iterating through all cells in the grid, return the calculated perimeter value, which represents the total perimeter of the island.
+
+The algorithm effectively calculates the perimeter of the island by considering the properties of land and water cells and how they contribute to the overall perimeter.
+
+### Python
+
+```python
+class Solution:
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        perimeter = 0
+        rows = len(grid)
+        cols = len(grid[0])
+
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j] == 1:
+                    perimeter += 4
+                    if i > 0 and grid[i - 1][j] == 1:
+                        perimeter -= 2
+                    if j > 0 and grid[i][j - 1] == 1:
+                        perimeter -= 2
+
+        return perimeter
+```
+> This function iterates through each cell of the grid. If the cell is land (grid[i][j] == 1), it adds 4 to the perimeter (representing the four sides of the square). Then, it checks if there are adjacent land cells (up and left) and subtracts 2 from the perimeter for each adjacent land cell found, as the shared side between two adjacent land cells doesn't contribute to the perimeter. Finally, it returns the total perimeter calculated.
+
+### JavaScript
+
+This JavaScript implementation follows the same logic as described earlier for the Python implementations. It iterates through each cell of the grid, calculates the perimeter of each land cell by adding 4 (representing the four sides of the square), and subtracts 2 for each adjacent land cell found (up and left), as the shared side doesn't contribute to the perimeter. Finally, it returns the total perimeter calculated.
+
+```javascript
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var islandPerimeter = function(grid) {
+    let perimeter = 0;
+    const rows = grid.length;
+    const cols = grid[0].length;
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (grid[i][j] === 1) {
+                perimeter += 4;
+                if (i > 0 && grid[i - 1][j] === 1) {
+                    perimeter -= 2;
+                }
+                if (j > 0 && grid[i][j - 1] === 1) {
+                    perimeter -= 2;
+                }
+            }
+        }
+    }
+
+    return perimeter;
+};
+```
+
+### C++
+
+This implementation follows the same logic as described earlier for the Python implementation. It iterates through each cell of the grid, calculates the perimeter of each land cell by adding 4 (representing the four sides of the square), and subtracts 2 for each adjacent land cell found (up and left), as the shared side doesn't contribute to the perimeter. Finally, it returns the total perimeter calculated.
+
+```C++
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int islandPerimeter(vector<vector<int>>& grid) {
+        int perimeter = 0;
+        int rows = grid.size();
+        int cols = grid[0].size();
+
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                if (grid[i][j] == 1) {
+                    perimeter += 4;
+                    if (i > 0 && grid[i - 1][j] == 1) {
+                        perimeter -= 2;
+                    }
+                    if (j > 0 && grid[i][j - 1] == 1) {
+                        perimeter -= 2;
+                    }
+                }
+            }
+        }
+
+        return perimeter;
+    }
+};
+```
+
