@@ -661,4 +661,147 @@ public:
     }
 };
 ```
+## 1971. Find if Path Exists in Graph
 
+[1971 LeetCode Link](https://leetcode.com/problems/find-if-path-exists-in-graph)
+
+To solve the problem of determining if there is a valid path from a source to a destination in an undirected graph, we can utilize a graph traversal algorithm. Specifically, Breadth-First Search (BFS) is a suitable choice for this task, given its efficiency in exploring nodes layer by layer.
+
+The approach involves:
+
+- Constructing an adjacency list from the edges, which makes traversing the graph's connections easier.
+- Using BFS to explore the graph starting from the source node and checking if we can reach the destination.
+
+### Python
+
+```python3
+from collections import deque, defaultdict
+
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        # Step 1: Build the graph using adjacency list
+        graph = defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+        
+        # Step 2: BFS to find the path from source to destination
+        queue = deque([source])
+        visited = set()
+        visited.add(source)
+        
+        while queue:
+            node = queue.popleft()
+            if node == destination:
+                return True
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+        
+        # If BFS completes without finding the destination
+        return False
+```
+
+> Code Debrief:
+> - Adjacency List Construction: We convert the edge list into a more accessible adjacency list format, where each vertex maps to a list of connected vertices. This structure facilitates efficient traversal.
+> - BFS Implementation: Using a queue, we start from the source vertex and explore each vertex's neighbors. We mark each visited vertex to prevent revisits and continue until we find the destination or exhaust the vertices.
+> - Graph Traversal Logic: If during traversal we reach the destination, we return True. If the BFS completes without reaching the destination, the method returns False, indicating no valid path exists.
+> This solution effectively handles large inputs up to the problem's constraints due to its O(V + E) time complexity, where V is the number of vertices and E is the number of edges.
+
+
+### JavaScript
+
+To tackle the problem of determining if there's a valid path between two nodes in an undirected graph using JavaScript, we can apply a similar approach as before but using Breadth-First Search (BFS) in JavaScript.
+
+```javascript
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number} source
+ * @param {number} destination
+ * @return {boolean}
+ */
+var validPath = function(n, edges, source, destination) {
+    // Step 1: Construct the graph using an adjacency list
+    const graph = {};
+    for (let [u, v] of edges) {
+        if (!graph[u]) graph[u] = [];
+        if (!graph[v]) graph[v] = [];
+        graph[u].push(v);
+        graph[v].push(u);
+    }
+    
+    // Step 2: Use BFS to find a path from source to destination
+    const queue = [source];
+    const visited = new Set();
+    visited.add(source);
+    
+    while (queue.length > 0) {
+        const node = queue.shift();
+        if (node === destination) {
+            return true; // Found a path
+        }
+        for (let neighbor of graph[node] || []) {
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                queue.push(neighbor);
+            }
+        }
+    }
+    
+    // If we finish the BFS without finding the destination
+    return false;
+};
+```
+
+### C++
+For the C++ implementation of the problem to determine if there's a valid path between two nodes in a bi-directional graph, we'll adopt a similar approach using Breadth-First Search (BFS). BFS is ideal for this scenario because it effectively searches layer by layer from the source, ensuring all possible paths are explored to find the destination.
+
+```c++
+#include <vector>
+#include <queue>
+#include <unordered_map>
+#include <unordered_set>
+
+using namespace std;
+
+class Solution {
+public:
+    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
+        // Step 1: Build the graph using an adjacency list
+        unordered_map<int, vector<int>> graph;
+        for (const vector<int>& edge : edges) {
+            graph[edge[0]].push_back(edge[1]);
+            graph[edge[1]].push_back(edge[0]);
+        }
+        
+        // Step 2: Use BFS to determine if there is a path from source to destination
+        queue<int> bfsQueue;
+        unordered_set<int> visited;
+        
+        bfsQueue.push(source);
+        visited.insert(source);
+        
+        while (!bfsQueue.empty()) {
+            int current = bfsQueue.front();
+            bfsQueue.pop();
+            
+            if (current == destination) {
+                return true; // Found the destination
+            }
+            
+            // Traverse all adjacent nodes
+            for (int neighbor : graph[current]) {
+                if (visited.find(neighbor) == visited.end()) {
+                    visited.insert(neighbor);
+                    bfsQueue.push(neighbor);
+                }
+            }
+        }
+        
+        // If we exhaust the queue without finding the destination
+        return false;
+    }
+};
+```
