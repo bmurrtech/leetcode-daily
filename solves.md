@@ -805,3 +805,91 @@ public:
     }
 };
 ```
+## 752. Open the Lock
+[752 LeetCode Link](https://leetcode.com/problems/open-the-lock/)
+
+The problem at hand is a classic case of the shortest path search in an unweighted graph, where each node represents a state of the lock, and edges between nodes represent a valid move of one slot on one wheel. A BFS (Breadth-First Search) approach is suitable here due to its ability to find the shortest path in such scenarios.
+
+- Treat each state of the lock as a node in a graph.
+- Use BFS to explore all possible states from the initial state ('0000'), while avoiding deadends.
+- For each state, generate all possible states that can be reached by turning one of the wheels one slot forward or backward.
+- If we reach the target state, return the number of moves made.
+- If we explore all possible moves without reaching the target, return -1.
+
+Key considerations:
+
+- We need to efficiently check for deadends and already visited states, hence we'll use a set for constant time complexity operations.
+- Each state has 8 possible next states (each wheel can be moved forward or backward).
+- Handle the wrap-around logic for wheel movements (from '9' to '0' and from '0' to '9').
+
+### Python
+Here is the Python code implementing the BFS solution:
+
+```python3
+from collections import deque
+from typing import List
+
+class Solution:
+    def openLock(self, deadends: List[str], target: str) -> int:
+        # Convert deadends to a set for quick lookup
+        deadends = set(deadends)
+        
+        # Early exit if initial state is a deadend or target is the initial state
+        if '0000' in deadends:
+            return -1
+        if target == '0000':
+            return 0  # Immediate return since no moves are needed if target is initial
+        
+        # BFS setup
+        queue = deque([('0000', 0)])  # (state, number of turns)
+        visited = {'0000'}  # Visited states
+        
+        while queue:
+            current, turns = queue.popleft()
+            
+            # Process all 8 possible moves (4 wheels x 2 directions)
+            for i in range(4):
+                # Calculate next and previous states for wheel at index i
+                for step in (-1, 1):  # -1 for backward, 1 for forward
+                    new_state = list(current)
+                    new_state[i] = str((int(new_state[i]) + step) % 10)
+                    new_state = ''.join(new_state)
+                    
+                    # Check if we've found the target
+                    if new_state == target:
+                        return turns + 1
+                    
+                    # Add new state to queue if it's not visited or a deadend
+                    if new_state not in visited and new_state not in deadends:
+                        visited.add(new_state)
+                        queue.append((new_state, turns + 1))
+        
+        # If no solution found
+        return -1
+```
+
+#### Understanding the Code
+The goal is to determine the minimum moves required to reach a target combination from the starting combination '0000', avoiding any combinations listed as deadends.
+
+- Initialization and Early Checks:
+  - Convert the deadends list to a set to allow fast look-up times when checking if a state should be avoided.
+  - Check if the initial state '0000' is a deadend. If it is, return -1 immediately because you can't start.
+  - Check if the target is '0000'. If it is, return 0 because you are already at the target and no moves are needed.
+- Breadth-First Search (BFS) Setup:
+  - A queue is initialized with a tuple containing the initial state '0000' and the count of moves 0.
+  - A set called visited is used to keep track of the combinations that have been already visited to avoid processing the same combination multiple times.
+- BFS Loop:
+  - The BFS loop begins by dequeuing the front element of the queue, which gives the current lock combination and the number of moves taken to reach this combination.
+  - The loop then generates all possible states that can be reached from the current state by manipulating each of the four wheels individually:
+  - Each wheel can be moved one step forward or one step backward. For example, moving from '0' to '9' (backward) or from '9' to '0' (forward) due to the circular nature of the wheels.
+  - For each new state generated, the code does the following checks:
+    - If this new state is the target, the function returns the current number of moves plus one (since we've made another move to reach this state).
+    - If this new state has not been visited before and it's not a deadend, it's added to the visited set and enqueued in the queue with the incremented move count.
+- End of Search:
+- If the queue is exhausted and the target has not been reached, the function returns -1, indicating that the target cannot be reached without encountering a deadend.
+
+> The solution uses a breadth-first search (BFS) to explore all possible combinations starting from '0000', level by level. This approach ensures that
+> the first time a combination is reached, it's reached with the minimum number of moves possible. By processing combinations layer by layer and
+> expanding outward from the initial state, the algorithm effectively finds the shortest path through the combinations that avoids deadends. The use of
+> a queue ensures that combinations are explored in the order they're encountered, and the use of a set for visited prevents re-processing the same
+> combination multiple times, enhancing efficiency.
