@@ -893,3 +893,42 @@ The goal is to determine the minimum moves required to reach a target combinatio
 > expanding outward from the initial state, the algorithm effectively finds the shortest path through the combinations that avoids deadends. The use of
 > a queue ensures that combinations are explored in the order they're encountered, and the use of a set for visited prevents re-processing the same
 > combination multiple times, enhancing efficiency.
+
+## 1137. N-th Tribonacci Number
+[1137 Leetcode Link](https://leetcode.com/problems/n-th-tribonacci-number)
+
+For the Tribonacci sequence problem, we'll implement a solution that ensures optimal performance by leveraging dynamic programming (DP). The essence of the Tribonacci sequence is similar to the Fibonacci, but instead of summing the last two terms to get the next, we sum the last three.
+
+Here's a concise breakdown of the approach:
+
+- Initialization: Set up base values for T0, T1, and T2.
+- Tabulation: Using a loop, calculate subsequent values based on the previous three, storing them in a list.
+- Final Retrieval: Access the value for Tn directly from the list.
+
+```pthyon3
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        # Base cases directly handled with a list
+        if n == 0:
+            return 0
+        if n == 1 or n == 2:
+            return 1
+        
+        # Tribonacci numbers up to n (space optimization: store only last three)
+        t0, t1, t2 = 0, 1, 1
+        
+        # Compute each Tribonacci number from 3 to n
+        for i in range(3, n + 1):
+            # Current is the sum of the last three
+            current = t0 + t1 + t2
+            # Slide the window
+            t0, t1, t2 = t1, t2, current
+        
+        # The nth Tribonacci number is now stored in t2
+        return t2
+```
+### Explanation of the Solution:
+- Initialization: We start by initializing t0, t1, and t2 for the base cases of the sequence.
+- Tabulation Loop: From T3 onwards, each Tribonacci number is computed by summing up the three preceding values, and the previous numbers are then shifted accordingly.
+- Memory Efficiency: Rather than maintaining a full list of Tribonacci numbers, only the three most recent numbers are stored. This is a form of space optimization common in DP solutions for sequences where only a few previous terms are required for the current computation.
+- Return: After computing up to the desired Tn, it is simply returned from the variable holding the last computed value.
