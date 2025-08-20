@@ -1,0 +1,62 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+.build/
+dist/
+build/
+
+# Virtualenvs
+.venv/
+venv*/
+venv_*/
+ENV/
+env/
+
+# Tests / Coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Logs / Temp
+*.log
+logs/
+tmp/
+.cache/
+
+# Environment / Secrets
+.env
+.env.*
+*.env
+secrets/
+*.key
+*.pem
+*.crt
+
+# Node (if any)
+node_modules/
+npm-debug.log*
+
+# Docker (if used)
+.docker/
+docker-compose.override.yml
+
+# Local-only PM workspace (never commit)
+pm/
+
+# Misc
+*.bak
+*.tmp
