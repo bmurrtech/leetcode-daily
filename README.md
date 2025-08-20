@@ -1,5 +1,11 @@
 # LeetCode Solutions: An AI Evolution Experiment
 
+[![Deployed on Railway](https://img.shields.io/badge/Deployed%20on-Railway-black?logo=railway)](https://railway.app)
+[![FastAPI](https://img.shields.io/badge/Powered%20By-FastAPI-%2300C7B7?logo=fastapi)](https://fastapi.tiangolo.com)
+[![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)](https://python.org)
+[![Rust](https://img.shields.io/badge/Rust-Code%20Execution-orange?logo=rust)](https://rust-lang.org)
+
 This repository is a machine learning science experiment exploring how multi-agent AI systems and deterministic code checks can improve algorithmic problem-solving through iteration. Rather than showcasing individual coding skills, this project demonstrates the evolution of AI capabilities in solving complex programming challenges.
 
 ## The AI Evolution Approach
@@ -8,15 +14,16 @@ As AI increasingly demonstrates proficiency in solving coding tasks, the key dif
 
 ## Multi-Agent System Architecture
 
-Solutions are generated through a specialized team of AI agents, each optimized for specific aspects of the problem-solving process:
+Solutions are generated through a specialized team of AI agents powered by world-class LLMs from **OpenAI**, **Anthropic**, **Google**, and leading **open-source** models. Each agent is optimized for specific aspects of the problem-solving process:
 
 ### 🤖 Agent Specializations
 
-[![Coding Models](https://img.shields.io/badge/Coding-GPT--5--mini%20%7C%20Claude--3.7-blue)](./docs/models.md)
-[![QC Models](https://img.shields.io/badge/QC-GPT--5--mini%20%7C%20Claude--3.7-green)](./docs/models.md)
-[![Testing](https://img.shields.io/badge/Testing-Gemini--Pro%20%7C%20Flash-orange)](./docs/models.md)
-[![Reasoning](https://img.shields.io/badge/Reasoning-O3%20%7C%20GPT--4o-red)](./docs/models.md)
-[![Orchestration](https://img.shields.io/badge/Orchestration-Gemini--Pro%20%7C%20Flash-purple)](./docs/models.md)
+- **Reasoning Models**: Complex problem analysis and optimization strategies
+- **Coding Models**: Fast and accurate code generation with multiple language support
+- **Quality Control Models**: Code review, validation, and optimization
+- **Testing Models**: Comprehensive test case generation and edge case validation
+- **Orchestration Models**: Context management and multi-agent coordination
+- **Context Awareness Models**: Large-scale code understanding and integration
 
 ## Solution Statistics
 
@@ -28,11 +35,22 @@ Solutions are generated through a specialized team of AI agents, each optimized 
 
 ## Implementation
 
-Powered by the [opticodegen toolkit](https://github.com/yourusername/opticodegen), this system utilizes:
-- Multiple specialized AI models for different aspects of problem-solving
-- Deterministic code validation and testing
-- Automated solution generation and documentation
-- Continuous integration and deployment
+Powered by the [opticodegen toolkit](https://github.com/yourusername/opticodegen) deployed on **Railway**, this system features:
+
+### Core Infrastructure
+- **FastAPI** backend with high-performance async endpoints
+- **Rust** integration for secure code compilation and execution
+- **E2B Code Interpreter** as fallback sandbox for code testing
+- **WebAssembly (WASM)** runtime for isolated code execution
+- **Multi-agent orchestration** with specialized task-specific models
+
+### Key Libraries & Technologies
+- **LLM Integration**: OpenAI, Anthropic, and Fal.ai client libraries
+- **Data Validation**: Pydantic v2 with advanced type checking
+- **HTTP & API**: HTTPX for async requests, FastAPI for endpoints
+- **Code Quality**: Ruff, Black, and MyPy for formatting and linting
+- **Reliability**: Tenacity for retry logic and error handling
+- **Testing**: Pytest with asyncio support and coverage reporting
 
 ## Solutions
 
@@ -57,14 +75,6 @@ Each solution is automatically generated and includes:
 - 🔍 Time/space complexity breakdown
 - 🏷️ Topic categorization and difficulty assessment
 - 📊 Performance metrics and comparisons
-
-## Contributing
-
-Contributions that enhance the AI system's capabilities are welcome! Please see our [Contributing Guidelines](./docs/CONTRIBUTING.md) for details on:
-- Adding new AI models
-- Improving solution quality
-- Enhancing test coverage
-- Optimizing performance
 
 ## License
 
