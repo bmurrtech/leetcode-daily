@@ -32,6 +32,9 @@ jobs:
       - name: Run daily automation
         env:
           OPTICODEGEN_API_URL: ${{ secrets.OPTICODEGEN_API_URL }}
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
           NTFY_URL: ${{ secrets.NTFY_URL }}
         run: |
           cd scripts

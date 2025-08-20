@@ -52,6 +52,16 @@ Here is the Python code implementing the solution:
         
         readme_content = f"""# LeetCode Solutions
 
+![LeetCode Badges](https://leetcode-badge-showcase.vercel.app/api?username=bmurrtech&animated=true)
+
+![Python](https://img.shields.io/badge/python-3.11+-blue?style=for-the-badge&logo=python&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-Automation-2088ff?style=for-the-badge&logo=github-actions&logoColor=white)
+![LeetCode](https://img.shields.io/badge/LeetCode-Daily_Solver-ffa116?style=for-the-badge&logo=leetcode&logoColor=white)
+![Automated](https://img.shields.io/badge/Automated-✅-success?style=for-the-badge)
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=bmurrtech&show_icons=true&theme=default&hide_border=true)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=bmurrtech&layout=compact&theme=default&hide_border=true)
+
 Automated daily LeetCode problem solving using [opticodegen toolkit](https://github.com/yourusername/opticodegen).
 
 ## Statistics
