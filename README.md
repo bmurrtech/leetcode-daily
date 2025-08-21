@@ -14,16 +14,55 @@ As AI increasingly demonstrates proficiency in solving coding tasks, the key dif
 
 ## Multi-Agent System Architecture
 
-Solutions are generated through a specialized team of AI agents powered by world-class LLMs from **OpenAI**, **Anthropic**, **Google**, and leading **open-source** models. Each agent is optimized for specific aspects of the problem-solving process:
+Solutions are generated through a specialized three-agent system powered by world-class LLMs. This architecture emphasizes clear role boundaries and iterative improvement:
 
-### 🤖 Agent Specializations
+### 🎭 Core Agents
 
-- **Reasoning Models**: Complex problem analysis and optimization strategies
-- **Coding Models**: Fast and accurate code generation with multiple language support
-- **Quality Control Models**: Code review, validation, and optimization
-- **Testing Models**: Comprehensive test case generation and edge case validation
-- **Orchestration Models**: Context management and multi-agent coordination
-- **Context Awareness Models**: Large-scale code understanding and integration
+- **Orchestrator**
+  - Manages workflow coordination
+  - Facilitates inter-agent communication
+  - Documents optimization journey
+  - Maintains context across iterations
+  - Powered by state-of-the-art LLMs
+
+- **Coder**
+  - Handles code generation
+  - Implements optimizations
+  - Maintains code quality
+  - Ensures best practices
+  - Uses advanced code-specialized models
+
+- **Reasoner**
+  - Analyzes solution approaches
+  - Evaluates performance implications
+  - Identifies optimization opportunities
+  - Validates implementation choices
+  - Leverages reasoning-optimized LLMs
+
+### 🔄 Workflow Pattern
+```mermaid
+graph TD
+    A[Problem Input] --> B[Orchestrator]
+    B --> C[Coder: Generate Solution]
+    C --> B
+    B --> D[Compile & Execute Code]
+    D --> B
+    B --> E[Reasoner: Analyze Results]
+    E --> B
+    B --> F{Improvements Needed?}
+    F -->|Yes| C
+    F -->|No| G[Final Solution]
+```
+
+### 💡 Core Philosophy
+
+The system operates on a "storyteller" pattern where the Orchestrator maintains the narrative of optimization without directly modifying code. It synthesizes insights from:
+- Coder ↔ Reasoner iterations
+- Compilation results
+- Performance analysis
+- Implementation choices
+
+This approach ensures that each solution includes not just the "what" but also the crucial "why" behind implementation decisions.
 
 ## Solution Statistics
 
@@ -45,12 +84,13 @@ Powered by **OptiCodeGen** - my proprietary multi-agent API system deployed on *
 - **Multi-agent orchestration** with specialized task-specific models
 
 ### Key Libraries & Technologies
-- **LLM Integration**: OpenAI, Anthropic, and Fal.ai client libraries
-- **Data Validation**: Pydantic v2 with advanced type checking
-- **HTTP & API**: HTTPX for async requests, FastAPI for endpoints
-- **Code Quality**: Ruff, Black, and MyPy for formatting and linting
-- **Reliability**: Tenacity for retry logic and error handling
-- **Testing**: Pytest with asyncio support and coverage reporting
+- **Model Orchestration**: Pydantic V2 and Instructor for multi-model coordination
+- **LLM Integration**: OpenAI, Google, and custom system prompting
+- **Data Validation**: Structured type validation and schema enforcement
+- **HTTP & API**: High-performance async endpoint management
+- **Code Quality**: Automated formatting and linting pipelines
+- **Reliability**: Robust error handling and retry mechanisms
+- **Testing**: Comprehensive test coverage with async support
 
 ## Solutions
 
