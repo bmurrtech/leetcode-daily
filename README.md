@@ -1,4 +1,4 @@
-# LeetCode Solutions: An AI Evolution Experiment
+# Automatic Daily Leetcode Solves: An AI Evolution Experiment
 
 [![Deployed on Railway](https://img.shields.io/badge/Deployed%20on-Railway-black?logo=railway)](https://railway.app)
 [![FastAPI](https://img.shields.io/badge/Powered%20By-FastAPI-%2300C7B7?logo=fastapi)](https://fastapi.tiangolo.com)
@@ -6,11 +6,31 @@
 [![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)](https://python.org)
 [![Rust](https://img.shields.io/badge/Rust-Code%20Execution-orange?logo=rust)](https://rust-lang.org)
 
-This repository is a machine learning science experiment exploring how multi-agent AI systems and deterministic code checks can improve algorithmic problem-solving through iteration. Rather than showcasing individual coding skills, this project demonstrates the evolution of AI capabilities in solving complex programming challenges.
+## The Autonomous Revolution
 
-## The AI Evolution Approach
+As AI increasingly demonstrates proficiency in solving coding tasks, the key differentiator becomes the ability to effectively orchestrate, tune, and maintain AI systems for real-world applications. This repository provides full transparency about AI's role in automated LeetCode solving while highlighting the critical human expertise (that's me) required in system design, cloud architecture, multi-agent orchestration, prompt engineering, and quality assurance.
 
-As AI increasingly demonstrates proficiency in solving coding tasks, the key differentiator becomes the ability to effectively orchestrate, tune, and maintain AI systems for real-world applications. This repository provides full transparency about AI's role while highlighting the human expertise required in system design, prompt engineering, and quality assurance.
+In this new age of AI-powered autonomous revolution, the workforce isn’t disappearing, but the old ways of working are. To quote Steve Jobs, “Innovation distinguishes between a leader and a follower.”
+
+## Implementation
+
+Powered by **OptiCodeGen** - my proprietary multi-agent API system deployed on Railway serverless infrastructure - this experiment demonstrates advanced AI orchestration from problem to multi-language solutions with built-in code testing and quality assurance measures. The OptiCodeGen engine is the backbone that makes this possible, featuring:
+
+### Core Infrastructure
+- **FastAPI** backend with high-performance async endpoints
+- **Rust** integration for secure code compilation and execution
+- **E2B Code Interpreter** as fallback sandbox for code testing
+- **WebAssembly (WASM)** runtime for isolated code execution
+- **Multi-agent orchestration** with specialized task-specific models
+
+### Key Libraries & Technologies
+- **Model Orchestration**: Pydantic V2 and Instructor for multi-model coordination
+- **LLM Integration**: OpenAI, Google, and custom system prompting
+- **Data Validation**: Structured type validation and schema enforcement
+- **HTTP & API**: High-performance async endpoint management
+- **Code Quality**: Automated formatting and linting pipelines
+- **Reliability**: Robust error handling and retry mechanisms
+- **Testing**: Comprehensive test coverage with async support
 
 ## Multi-Agent System Architecture
 
@@ -23,7 +43,7 @@ Solutions are generated through a specialized three-agent system powered by worl
   - Facilitates inter-agent communication
   - Documents optimization journey
   - Maintains context across iterations
-  - Powered by state-of-the-art LLMs
+  - Powered by large-context-window LLM
 
 - **Coder**
   - Handles code generation
@@ -51,13 +71,7 @@ The system follows a recursive optimization pattern:
 
 ### 💡 Core Philosophy
 
-The system operates on a "storyteller" pattern where the Orchestrator maintains the narrative of optimization without directly modifying code. It synthesizes insights from:
-- Coder ↔ Reasoner iterations
-- Compilation results
-- Performance analysis
-- Implementation choices
-
-This approach ensures that each solution includes not just the "what" but also the crucial "why" behind implementation decisions.
+You'll notice that all solutions in the [`/solves`](./solves) directory, includes not just the "what" but also the crucial "why" behind implementation decisions. Think of these robotic code comments as a glimpse inside the mind of the machine or receipts for code decisions (whether for better or worse). It'll be facinating to see how AI improves over time with more advanced models released on the regular!
 
 ## Solution Statistics
 
@@ -67,48 +81,14 @@ This approach ensures that each solution includes not just the "what" but also t
 [![Hard Problems](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/yourusername/leetcode-daily/main/stats.json&label=Hard&query=$.hard&color=red)](./solves)
 [![Build Status](https://github.com/yourusername/leetcode-daily/workflows/Daily%20Solve/badge.svg)](https://github.com/yourusername/leetcode-daily/actions)
 
-## Implementation
-
-Powered by **OptiCodeGen** - my proprietary multi-agent API system deployed on **Railway** serverless infrastructure - this experiment demonstrates advanced AI orchestration at scale. The OptiCodeGen engine is the critical backbone that makes these automated solutions possible, featuring:
-
-### Core Infrastructure
-- **FastAPI** backend with high-performance async endpoints
-- **Rust** integration for secure code compilation and execution
-- **E2B Code Interpreter** as fallback sandbox for code testing
-- **WebAssembly (WASM)** runtime for isolated code execution
-- **Multi-agent orchestration** with specialized task-specific models
-
-### Key Libraries & Technologies
-- **Model Orchestration**: Pydantic V2 and Instructor for multi-model coordination
-- **LLM Integration**: OpenAI, Google, and custom system prompting
-- **Data Validation**: Structured type validation and schema enforcement
-- **HTTP & API**: High-performance async endpoint management
-- **Code Quality**: Automated formatting and linting pipelines
-- **Reliability**: Robust error handling and retry mechanisms
-- **Testing**: Comprehensive test coverage with async support
-
-## Solutions
-
-All solutions are available in the [`/solves`](./solves) directory, organized by problem number and automatically updated daily.
-
 ## Technical Details
 
 ### Solution Architecture
 - **Problem Fetching:** LeetCode GraphQL API with smart caching
-- **Solution Generation:** Multi-agent AI system via opticodegen
-- **Quality Control:** Deterministic code validation and testing
+- **Solution Generation:** Multi-agent AI system via my OptiCodeGen API engine
 - **Deployment:** Railway-hosted infrastructure
 - **Automation:** GitHub Actions with intelligent scheduling
-- **Monitoring:** Comprehensive metrics and notifications
-
-### Solution Components
-Each solution is automatically generated and includes:
-- 🧠 AI model configuration and parameters
-- ✅ Optimized, tested Python implementation
-- 📝 Detailed approach and reasoning analysis
-- 🔍 Time/space complexity breakdown
-- 🏷️ Topic categorization and difficulty assessment
-- 📊 Performance metrics and comparisons
+- **Monitoring:** Metrics and notifications
 
 ## License
 
