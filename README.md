@@ -87,9 +87,6 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareA
 *Powered by OptiCodeGen - Proprietary Multi-Agent Code Intelligence System*
 
 ---
-
-**OptiCodeGen Engine Credits**: The sophisticated multi-agent AI system that powers all solutions in this repository was developed and is maintained by me. This private API handles code generation, quality assurance, iterative improvement, compilation, and testing - funded entirely at my own expense using world-class LLMs from OpenAI, Anthropic, and Google. Without this engine, none of these automated solutions would be possible.
-
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
