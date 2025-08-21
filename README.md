@@ -35,7 +35,7 @@ Solutions are generated through a specialized team of AI agents powered by world
 
 ## Implementation
 
-Powered by the [opticodegen toolkit](https://github.com/yourusername/opticodegen) deployed on **Railway**, this system features:
+Powered by **OptiCodeGen** - my proprietary multi-agent API system deployed on **Railway** serverless infrastructure - this experiment demonstrates advanced AI orchestration at scale. The OptiCodeGen engine is the critical backbone that makes these automated solutions possible, featuring:
 
 ### Core Infrastructure
 - **FastAPI** backend with high-performance async endpoints
@@ -84,7 +84,11 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareA
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
-*Powered by [opticodegen](https://github.com/yourusername/opticodegen) - Advanced AI Problem Solving*
+*Powered by OptiCodeGen - Proprietary Multi-Agent Code Intelligence System*
+
+---
+
+**OptiCodeGen Engine Credits**: The sophisticated multi-agent AI system that powers all solutions in this repository was developed and is maintained by me. This private API handles code generation, quality assurance, iterative improvement, compilation, and testing - funded entirely at my own expense using world-class LLMs from OpenAI, Anthropic, and Google. Without this engine, none of these automated solutions would be possible.
 
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
