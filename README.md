@@ -39,20 +39,15 @@ Solutions are generated through a specialized three-agent system powered by worl
   - Validates implementation choices
   - Leverages reasoning-optimized LLMs
 
-### 🔄 Workflow Pattern
-```mermaid
-graph TD
-    A[Problem Input] --> B[Orchestrator]
-    B --> C[Coder: Generate Solution]
-    C --> B
-    B --> D[Compile & Execute Code]
-    D --> B
-    B --> E[Reasoner: Analyze Results]
-    E --> B
-    B --> F{Improvements Needed?}
-    F -->|Yes| C
-    F -->|No| G[Final Solution]
-```
+### 🔄 Solution Workflow
+
+The system follows a recursive optimization pattern:
+
+1. **Problem Analysis**: Orchestrator evaluates the challenge
+2. **Solution Generation**: Coder implements approach
+3. **Validation**: Code is compiled and executed
+4. **Analysis**: Reasoner evaluates results
+5. **Iteration**: Process repeats if improvements needed
 
 ### 💡 Core Philosophy
 
@@ -96,7 +91,6 @@ Powered by **OptiCodeGen** - my proprietary multi-agent API system deployed on *
 
 All solutions are available in the [`/solves`](./solves) directory, organized by problem number and automatically updated daily.
 
-
 ## Technical Details
 
 ### Solution Architecture
@@ -124,9 +118,8 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareA
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
-*Powered by OptiCodeGen - Proprietary Multi-Agent Code Intelligence System*
+*Powered by OptiCodeGen - My proprietary multi-agent code intelligence system, leveraging world-class LLMs for automated problem-solving*
 
----
 [cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
 [cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
